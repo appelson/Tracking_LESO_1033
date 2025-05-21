@@ -1,6 +1,6 @@
 # Tracking Law Enforcement Support Office (LESO) Police Data
 
-This repository automates the process of downloading public information related to law enforcement agencies from the **Law Enforcement Support Office (LESO)** website. The scraper  downloads all available Excel files from the [LESO Public Information page](https://www.dla.mil/Disposition-Services/Offers/Law-Enforcement/Public-Information/).
+This repository automates the process of downloading public information related to military equipment owned by law enforcement agencies from the **Law Enforcement Support Office (LESO)** website. The scraper downloads all available Excel files from the [LESO Public Information page](https://www.dla.mil/Disposition-Services/Offers/Law-Enforcement/Public-Information/).
 
 The scraper runs monthly and saves the downloaded files in directories named by the date they were retrieved. 
 

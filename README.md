@@ -10,10 +10,10 @@ Although some of this data can be accessed through the Internet Archive, using i
 
 
 ## File Structure
-
-`.github/workflows/run_scripts.yaml`: GitHub Actions workflow file used for automating the execution of the scraper script.
-`scraper.py`: Python script responsible for scraping data from the DLA website and downloading Excel files.
-`downloads/`: Directory where the Excel files are downloaded, categorized by the date the files were retrieved.
-`README.md`: This file.
+- `.github/workflows/run_scripts.yaml`: GitHub Actions workflow file used for automating the execution of the scraper script.
+- `scraper.py`: Python script responsible for scraping data from the DLA website and downloading Excel files using Selenium.
+- `downloads/`: Directory where the Excel files are downloaded.
+- `README.md`: This file.
 
 ## Source
+The code written is directly influenced by “Jsoma/Selenium-Github-Actions.” GitHub, 2025, [github.com/jsoma/selenium-github-actions](github.com/jsoma/selenium-github-actions).

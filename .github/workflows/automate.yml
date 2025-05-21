@@ -1,4 +1,4 @@
-name: automate2
+name: automate5
 
 on:
   workflow_dispatch:

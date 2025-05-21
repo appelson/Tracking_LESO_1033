@@ -1,4 +1,4 @@
-name: automate5
+name: automation
 
 on:
   schedule:

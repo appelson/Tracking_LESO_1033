@@ -1,4 +1,4 @@
-name: automate
+name: automate2
 
 on:
   workflow_dispatch:
@@ -15,27 +15,42 @@ jobs:
         with:
           python-version: '3.9'
 
-      - name: Install dependencies
+      - name: Install necessary packages
         run: |
-          sudo apt-get update && sudo apt-get install -y chromium-browser wget
+          sudo apt-get update
+          sudo apt-get install -y chromium-browser
+          sudo apt-get install -y wget
           pip install requests beautifulsoup4 pandas webdriver-manager selenium
 
       - name: Run the scraping script
         run: python scraper.py
 
-      - name: Commit changes if any
+      - name: Commit downloaded files if any
         run: |
           cd downloads
           git add -A
-          git diff --exit-code || git commit -m "Add new downloaded files" || echo "No new files to commit"
+          git commit -m "Add new downloaded files" || echo "No new files to commit"
 
-      - name: Pull and push changes
+      - name: Stash any uncommitted changes (if any)
+        run: |
+          git stash || echo "No changes to stash"
+
+      - name: Pull the latest changes
+        run: |
+          git pull origin main --rebase
+
+      - name: Apply stashed changes (if any)
+        run: |
+          git stash pop || echo "No stashed changes"
+
+      - name: Commit and push changes
         run: |
           git config --local user.name "github-actions"
           git config --local user.email "actions@users.noreply.github.com"
-          git pull origin main --rebase
+          git diff --exit-code || echo "Changes detected"
           git add -A
-          git diff --exit-code || git commit -m "Auto-commit from GitHub Actions at $(date -u)"
-          git push || echo "No changes to push"
+          git commit -m "Auto-commit from GitHub Actions at $(date -u)" || echo "No changes to commit"
+          git pull --rebase || echo "Nothing to rebase"
+          git push || echo "Nothing to push"
         env:
           GITHUB_TOKEN: ${{ secrets.MY_TOKEN }}

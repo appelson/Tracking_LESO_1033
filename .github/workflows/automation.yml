@@ -3,7 +3,7 @@ name: automation
 on:
   schedule:
     # The original '0 0 10 * *' ran once a month.
-    - cron: '0 0 10 * *'
+    - cron: '0 0 1 1,4,7,10 *'
   workflow_dispatch: # Allows you to run it manually
 
 # Required permissions for the built-in GITHUB_TOKEN to push changes
